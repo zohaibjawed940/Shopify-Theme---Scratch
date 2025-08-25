@@ -1,0 +1,90 @@
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Choose a collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Number of products to show",
+      "default": 4,
+      "min": 2,
+      "max": 12,
+      "step": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="featured-collection container">
+  {% if section.settings.collection != blank %}
+    {% assign collection = collections[section.settings.collection] %}
+    <h2 class="featured-collection__title">{{ collection.title }}</h2>
+
+    <div class="featured-collection__grid">
+      {% for product in collection.products limit: section.settings.products_to_show %}
+        <div class="featured-collection__item">
+          <a href="{{ product.url }}">
+            <img 
+              src="{{ product.featured_image | img_url: '400x' }}" 
+              alt="{{ product.title }}" 
+              loading="lazy"
+            >
+            <h3 class="featured-collection__product-title">{{ product.title }}</h3>
+            <p class="featured-collection__price">
+              {{ product.price | money }}
+              {% if product.compare_at_price > product.price %}
+                <span class="featured-collection__compare-price">
+                  {{ product.compare_at_price | money }}
+                </span>
+              {% endif %}
+            </p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No collection selected.</p>
+  {% endif %}
+</section>
+
+<style>
+  .featured-collection {
+    padding: 40px 0;
+  }
+  .featured-collection__title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .featured-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .featured-collection__item {
+    text-align: center;
+  }
+  .featured-collection__product-title {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  .featured-collection__price {
+    font-weight: bold;
+  }
+  .featured-collection__compare-price {
+    text-decoration: line-through;
+    color: #888;
+    font-weight: normal;
+    margin-left: 5px;
+  }
+</style>

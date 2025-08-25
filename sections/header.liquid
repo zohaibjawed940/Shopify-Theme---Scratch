@@ -1,0 +1,68 @@
+{% style %}
+.site-header {
+  display: flex;
+  background-color: #eeeeee;
+  color: black;
+}
+{% endstyle %}
+
+<header class="site-header">
+
+  {% comment %} Logo {% endcomment %}
+   <div>
+    {% if section.settings.logo != blank %}
+      <img
+      src="{{ section.settings.logo | image_url: width: 300 }}"
+      style="max-width: {{ section.settings.logo_max_width }}px; height: auto;"
+    >
+    {% endif %}
+   </div>
+
+  {% comment %} Navigation {% endcomment %}
+   <nav class="main-nav">
+    {% if section.settings.menu != blank and linklists[section.settings.menu].links.size > 0 %}
+      <ul class="menu">
+        {% for link in linklists[section.settings.menu].links %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+   </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 60,
+      "max": 240,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

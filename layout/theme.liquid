@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <style>
+
+      {{ settings.heading_font | font_face }}
+      {{ settings.body_font | font_face }}
+      
+      :root {
+        --heading-font: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+        --body-font: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }}
+      }
+    </style>
+
+    <link rel="stylesheet" href="base.css">
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body>
+    {% sections 'header-group' %}
+    {{ content_for_layout }}
+    {{ 'theme.js' | asset_url | script_tag }}
+  </body>
+</html>

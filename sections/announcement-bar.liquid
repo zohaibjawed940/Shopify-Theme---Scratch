@@ -1,0 +1,35 @@
+<div style="background-color: {{ section.settings.background-color }}" class="announcement-bar">
+  <h2 style="color: {{ section.settings.body_text_color }}">{{ section.settings.announcement-bar-text }}</h2>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement-bar-text",
+      "label": "Announcement Bar Text",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "label": "Background Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}

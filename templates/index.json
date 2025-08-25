@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+    "sections": {
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "hero_heading": "Hero Section",
+          "hero_text": "<p>Discover Yourself</p>",
+          "hero_button_text": "Shop Now",
+          "button_color": ""
+        }
+      },
+      "featured_collection_Tn99iX": {
+        "type": "featured-collection",
+        "name": "Featured Collection",
+        "settings": {
+          "collection": "allbirds",
+          "products_to_show": 4
+        }
+      }
+    },
+    "order": [
+      "hero",
+      "featured_collection_Tn99iX"
+    ]
+  }
+  

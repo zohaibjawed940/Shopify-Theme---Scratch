@@ -1,0 +1,27 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Scratch Theme",
+        "theme_author": "Zohaib J.",
+        "theme_documentation_url": "https://google.com",
+        "theme_support_url": "https://google.com",
+        "theme_version": "1.0.0"
+    },
+    {
+        "name": "Typography",
+        "settings": [
+            {
+                "type": "font_picker",
+                "id": "heading_font",
+                "label": "Heading Font Family",
+                "default": "helvetica_n4"
+            },
+            {
+                "type": "font_picker",
+                "id": "body_font",
+                "label": "Body Font Family",
+                "default": "helvetica_n4"
+            }
+        ],
+    }
+]

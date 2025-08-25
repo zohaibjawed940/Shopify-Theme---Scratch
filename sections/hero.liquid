@@ -1,0 +1,46 @@
+<div style="background-image: {{ section.settings.hero_image | image_url: width: 1200 }}">
+  <div>
+    <h2>{{ section.settings.hero_heading }}</h2>
+    <p>{{ section.settings.hero_text }}</p>
+    <button style="color: {{ section.settings.button_color }}">{{ section.settings.hero_button_text }}</button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "hero_text",
+      "label": "An Excerpt"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color"
+    },
+    {
+      "type": "image_picker",
+      "label": "Hero Image",
+      "id": "hero_image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "category": "General"
+    }
+  ]
+}
+{% endschema %}

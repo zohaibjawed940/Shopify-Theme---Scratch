@@ -1,0 +1,150 @@
+{% style %}
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  .cart {
+    width: 100%;
+  }
+
+  .cart-header {
+    padding: 0 40px;
+    margin: 0;
+    background-color: #eeeeee;
+    display: flex;
+    /* justify-content: space-between; */
+    height: 50px;
+    align-items: center;
+  }
+
+  .cart-header-title {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+
+  #product {
+    width: 40%;
+  }
+
+  #price,
+  #quantity,
+  #total {
+    text-align: center;
+    width: 20%;
+  }
+
+  .cart-body {
+    display: flex;
+    padding: 20px 40px;
+  }
+
+  .item-title {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+    margin-bottom: 5px;
+  }
+
+  .product-wrapper {
+    display: flex;
+    width: 40%;
+  }
+
+  .price-wrapper,
+  .quantity-wrapper,
+  .total-wrapper {
+    text-align: center;
+    width: 20%;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100px;
+  }
+
+  .product-info-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price,
+  .quantity, .total {
+    height: 100px;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cart-title {
+    height: 250px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    background-color:rgb(39, 39, 39);
+    color: white;
+
+  }
+{% endstyle %}
+
+<div class="cart-title">
+  <h2>Your Cart</h2>
+</div>
+
+<form action="{{ routes.cart_url }}" method="post" novalidate class="cart" id="cart-form">
+  <div class="parent-wrapper">
+    <div class="left-section">
+      <div class="cart-header">
+        <div id="product" class="cart-header-title">Product</div>
+        <div id="price" class="cart-header-title">Price</div>
+        <div id="quantity" class="cart-header-title">Quantity</div>
+        <div id="total" class="cart-header-title">Total</div>
+      </div>
+      <div class="cart-body">
+        <div class="product-wrapper">
+          <div class="product-info-main">
+            {% for item in cart.items %}
+              <div class="product-info">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 300 }}" width="96" height="96" loading="lazy">
+                {% endif %}
+                <h2 class="item-title">{{ item.title }}</h2>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="price-wrapper">
+          {% for item in cart.items %}
+            <div class="price">{{ item.price | money }}</div>
+          {% endfor %}
+        </div>
+        <div class="quantity-wrapper">
+          {% for item in cart.items %}
+            <div class="quantity">
+              <p style="margin: 0; padding: 0">x{{ item.quantity }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="total-wrapper">
+          <div class="total">
+            {{ cart.items_subtotal_price | money }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
