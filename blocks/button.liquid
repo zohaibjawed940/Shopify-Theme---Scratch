@@ -1,0 +1,41 @@
+<a href="{{ section.settings.button_link }}">
+  <button
+    class="btn"
+    style="color: {{ section.settings.btn_text_color }}; background-color: {{ section.settings.btn_bg_color }}"
+  >
+    {{ section.settings.btn_text }}
+  </button>
+</a>
+
+{% schema %}
+{
+  "name": "Button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "btn_text",
+      "default": "Click Here",
+      "label": "Button Text"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+    "name": "Button"}
+  ]
+}
+{% endschema %}

@@ -1,82 +1,137 @@
+<style>
+  .product-page {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
+  }
+
+  .product-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-details h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .product-details p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+  }
+
+  .add-to-cart-btn {
+    padding: 12px 20px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #1f8c4d;
+  }
+
+  .product-description {
+    line-height: 1.5;
+    color: #666;
+  }
+</style>
+
 <div class="product-page">
-    <div class="product-image">
-        <img src="{{ product.featured_image | image_url: width: 400 }}">
-    </div>
-    <div class="product-details">
-        <h1>{{ product.title }}</h1>
-        <p>{{ product.price | money }}</p>
-        {% form 'product', product %}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-            <input type="hidden" name="return_to" value="/cart">
-            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        {% endform %}
-        <p class="product-description">{{ product.description }}</p>
-    </div>
+  <div class="product-image">
+    <img src="{{ product.featured_image | image_url: width: 400 }}">
+  </div>
+  <div class="product-details">
+    {% for block in section.blocks %}
+        {% case block.type %}
+
+        {% when 'title' %}
+            <h1>{{ product.title }}</h1>
+
+        {% when 'price' %}
+            <p>{{ product.price | money }}</p>
+
+        {% when 'addtocart' %}
+            {% form 'product', product %}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="return_to" value="/cart">
+                <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+              {% endform %}
+
+        {% when 'description' %}
+            <p class="product-description">{{ product.description }}</p>
+
+        {% endcase %}
+
+    {% endfor %}
+  </div>
 </div>
 
-<style>
-    .product-page {
-        display: flex;
-        gap: 20px;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-        border: 1px solid #eee;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        font-family: Arial, sans-serif;
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Product Title",
+      "settings": []
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "settings": []
+    },
+    {
+      "type": "addtocart",
+      "name": "Add To Cart",
+      "settings": []
+    },
+    {
+        "type": "description",
+        "name": "Description",
+        "settings": []
     }
-    
-    .product-image {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  ],
+  "presets": [
+    {
+      "name": "Product",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "title",
+          "type": "price",
+          "type": "addtocart"
+        }
+      ]
     }
-    
-    .product-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-    
-    .product-details {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .product-details h1 {
-        font-size: 28px;
-        margin: 0;
-    }
-    
-    .product-details p {
-        font-size: 16px;
-        color: #555;
-        margin: 0;
-    }
-    
-    .add-to-cart-btn {
-        padding: 12px 20px;
-        background-color: #27ae60;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-    
-    .add-to-cart-btn:hover {
-        background-color: #1f8c4d;
-    }
-    
-    .product-description {
-        line-height: 1.5;
-        color: #666;
-    }
-    
-</style>
+  ]
+}
+{% endschema %}

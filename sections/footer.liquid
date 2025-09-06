@@ -1,0 +1,67 @@
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": []
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu",
+          "default": "main-menu"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {"type": "newsletter"},
+        {"type": "menu"}
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="footer-wrapper">
+    <div class="footer-grid">
+        {% for block in section.blocks %}
+            <div class="footer-black footer-block--{{ block.type }}">
+                {% case block.type %}
+
+                {% when 'newsletter' %}
+                    <h4>Newsletter</h4>
+                    <form method="post" action="{{ routes.newsletter_subscribe_url }}" id="NewsletterForm" accept-charset="UTF-8" class="footer-newsletter-form">
+                        <input type="hidden" name="form_type" value="customer">
+                        <input type="hidden" name="utf8" value="✓">
+                        <input type="email" name="contact[email]" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+
+                {% when 'menu' %}
+                    <h4 class="footer-title">Quick Links</h4>
+                    {% if block.settings.menu != blank %}
+                        <ul class="footer-menu">
+                            {% for link in linklists[block.settings.menu].links %}
+                                <li>
+                                    <a href="{{ link.url }}">{{ link.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endcase %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

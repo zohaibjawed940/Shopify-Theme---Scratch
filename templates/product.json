@@ -1,9 +1,45 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
     "sections": {
-        "main": {
-            "type": "main-product",
+      "main": {
+        "type": "main-product",
+        "blocks": {
+          "title_WpMH3E": {
+            "type": "title",
             "settings": {}
-        }
+          },
+          "price_EnqRLM": {
+            "type": "price",
+            "settings": {}
+          },
+          "description_erQgLU": {
+            "type": "description",
+            "settings": {}
+          },
+          "addtocart_mB9y8L": {
+            "type": "addtocart",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "title_WpMH3E",
+          "price_EnqRLM",
+          "description_erQgLU",
+          "addtocart_mB9y8L"
+        ],
+        "settings": {}
+      }
     },
-    "order": ["main"]
-}
+    "order": [
+      "main"
+    ]
+  }
+  

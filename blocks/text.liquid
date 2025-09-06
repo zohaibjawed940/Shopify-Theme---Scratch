@@ -1,0 +1,37 @@
+{% assign tag = block.settings.tag | default: 'p' %}
+<{{ tag }}>{{ block.settings.text }}</{{ tag }}>
+
+{% schema %}
+{
+  "name": "Text Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text",
+      "default": "Your text here"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "HTML Element",
+      "options": [
+        { "value": "p", "label": "paragraph" },
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "div", "label": "div" },
+        { "value": "span", "label": "span" }
+      ],
+      "default": "p"
+    }
+  ],
+  "presets": [
+    {
+    "name": "Text"}
+  ]
+}
+{% endschema %}

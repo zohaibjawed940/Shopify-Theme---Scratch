@@ -1,5 +1,8 @@
-<div style="background-color: {{ section.settings.background-color }}" class="announcement-bar">
-  <h2 style="color: {{ section.settings.body_text_color }}">{{ section.settings.announcement-bar-text }}</h2>
+<div
+  style="--announcement-bar-bg-color: {{ section.settings.background-color }}; --announcement-bar-padding-top: {{ section.settings.padding_top }}px; --announcement-bar-padding-bottom: {{ section.settings.padding_bottom }}px; --announcement-justify-content: {{ section.settings.horizontal_alignment }}"
+  class="announcement-bar"
+>
+  <h2 style="color: {{ section.settings.body_text_color }}">{{ section.settings['announcement-bar-text'] }}</h2>
 </div>
 
 {% schema %}
@@ -23,6 +26,41 @@
       "id": "background-color",
       "label": "Background Color",
       "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 5,
+      "max": 20,
+      "min": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Botto",
+      "default": 5,
+      "max": 20,
+      "min": 5
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Align Text",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
     }
   ],
   "presets": [

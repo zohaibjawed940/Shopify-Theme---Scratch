@@ -1,0 +1,27 @@
+<div id="cart-drawer" class="side-cart">
+
+    {% comment %} Overlay {% endcomment %}
+     <div class="side-cart__overlay"></div>
+
+     <div class="side-cart__content">
+        <button type="button" id="side-cart-close" class="cart-drawer__close">
+            &times;
+        </button>
+        <h2>Your Cart</h2>
+        <div id="cart-items" class="cart-drawer__items">
+            <p>Your Cart Is Empty</p>
+
+            <div id="cart-items" class="cart-drawer__items">
+                <p>Product Name</p>
+                <p>Qty: 1</p>
+                <p>$20:00</p>
+            </div>
+        </div>
+
+        <div class="cart-drawer__footer">
+            <p>Subtotal: <span id="cart-subtotal">$0.00</span></p>
+            <a href="/cart" class="cart-drawer__view-cart">View Cart</a>
+            <a href="/checkout" class="cart-drawer__checkout">checkout</a>
+        </div>
+     </div>
+</div>

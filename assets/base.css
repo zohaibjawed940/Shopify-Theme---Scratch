@@ -10,3 +10,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font)
 }
+
+.announcement-bar {
+    padding-top: var(--announcement-bar-padding-top);
+    background-color: var(--announcement-bar-bg-color);
+    display: flex;
+    justify-content: var(--announcement-justify-content);
+}

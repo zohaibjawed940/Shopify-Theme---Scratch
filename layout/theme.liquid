@@ -17,11 +17,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ content_for_header }}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     {% sections 'header-group' %}
     {{ content_for_layout }}
+
+    {% render 'cart-drawer' %}
+
     {{ 'theme.js' | asset_url | script_tag }}
+    {{ 'cart=drawer.js' | asset_url | script_tag }}
+    {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
   </body>
 </html>
