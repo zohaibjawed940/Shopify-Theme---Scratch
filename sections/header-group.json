@@ -11,26 +11,41 @@
     "name": "Header Group",
     "type": "header",
     "sections": {
-      "announcement_bar_r3ydqd": {
+      "announcement_bar": {
         "type": "announcement-bar",
         "name": "Announcement Bar",
         "settings": {
           "announcement-bar-text": "Welcome to our store",
+          "font_size": 14,
           "body_text_color": "#ffffff",
-          "background-color": "#e72323"
+          "background-color": "#000000",
+          "padding_top": 15,
+          "padding_bottom": 15,
+          "horizontal_alignment": "center"
         }
       },
       "header": {
         "type": "header",
+        "name": "Header",
         "settings": {
-          "logo": "shopify://shop_images/2_39fef358-8280-4571-b288-5cd61e3abe8e.png",
-          "logo_max_width": 140,
-          "menu": ""
+          "bg_color": "#eeeeee",
+          "padding_top": 20,
+          "padding_bottom": 20,
+          "padding_left": 20,
+          "padding_right": 20,
+          "logo": "shopify://shop_images/khazanay_logo_black_1_1.png",
+          "logo_width": 190,
+          "menu": "main-meni",
+          "menu_font_size": 16,
+          "menu_link_color": "#000000",
+          "link_font_weight": "700",
+          "links_transform": "Capitalize",
+          "link_gap": 14
         }
       }
     },
     "order": [
-      "announcement_bar_r3ydqd",
+      "announcement_bar",
       "header"
     ]
   }

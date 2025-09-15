@@ -2,7 +2,9 @@
   style="--announcement-bar-bg-color: {{ section.settings.background-color }}; --announcement-bar-padding-top: {{ section.settings.padding_top }}px; --announcement-bar-padding-bottom: {{ section.settings.padding_bottom }}px; --announcement-justify-content: {{ section.settings.horizontal_alignment }}"
   class="announcement-bar"
 >
-  <h2 style="color: {{ section.settings.body_text_color }}">{{ section.settings['announcement-bar-text'] }}</h2>
+  <h2 style="--announcement-color: {{ section.settings.body_text_color }}; --announcement-font-size: {{ section.settings.font_size }}px" class="announcement-heading">
+    {{ section.settings['announcement-bar-text'] }}
+  </h2>
 </div>
 
 {% schema %}
@@ -14,6 +16,14 @@
       "id": "announcement-bar-text",
       "label": "Announcement Bar Text",
       "default": "Welcome to our store"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 14,
+      "max": 24,
+      "min": 14
     },
     {
       "type": "color",

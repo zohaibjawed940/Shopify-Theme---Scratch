@@ -1,8 +1,20 @@
-<div style="background-image: {{ section.settings.hero_image | image_url: width: 1200 }}">
-  <div>
-    <h2>{{ section.settings.hero_heading }}</h2>
-    <p>{{ section.settings.hero_text }}</p>
-    <button style="color: {{ section.settings.button_color }}">{{ section.settings.hero_button_text }}</button>
+<div class="hero-section" style="--hero-image: url({{ section.settings.hero_image | image_url: width: 2000 }});">
+  <div
+    style="--hero-horizontal-alignment: {{ section.settings.content_horizontal_alignment }}; --hero-vertical-alignment: {{ section.settings.content_vertical_alignment }}; --hero-content-gap: {{ section.settings.hero_content_gap }}px"
+    class="hero-content"
+  >
+    {% for block in section.blocks %}
+      <h2
+        class="hero-heading"
+        style="--hh-font-size: {{ block.settings.hero_heading_font_size }}px; --hero-heading-font-weight: {{ block.settings.hero_heading_font_weight }}; --hh_text_transform: {{ block.settings.hh_text_transform }}"
+      >
+        {{ block.settings.hero_heading }}
+      </h2>
+      <p style="--hero-para-font-size: {{ block.settings.hero_para_font_size }}px" class="hero-para">{{ block.settings.hero_paragraph }}</p>
+      {% if block.settings.hero_button_text != blank %}
+        <button class="hero-button" style="--btn-color: {{ block.settings.hero_btn_text_color }}; --btn-bg-color: {{ block.settings.hero_button_bg_color }}; --btn-hover-color: {{ block.settings.hero_btn_text_hover_color }}; --btn-hover-bg-color: {{ block.settings.hero_btn_hover_color }}">{{ section.settings.hero_button_text }}</button>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
@@ -10,11 +22,6 @@
 {
   "name": "Hero",
   "settings": [
-    {
-      "type": "text",
-      "id": "hero_heading",
-      "label": "Main Heading"
-    },
     {
       "type": "richtext",
       "id": "hero_text",
@@ -34,6 +41,180 @@
       "type": "image_picker",
       "label": "Hero Image",
       "id": "hero_image"
+    },
+    {
+      "type": "select",
+      "id": "content_horizontal_alignment",
+      "label": "Content Horizontal Alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_vertical_alignment",
+      "label": "Content Vertical Alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "hero_content_gap",
+      "label": "Content Gap (Verically)",
+      "default": 5,
+      "min": 0,
+      "max": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Main Headline",
+      "settings": [
+        {
+          "type": "text",
+          "id": "hero_heading",
+          "label": "Heading",
+          "default": "Welcome to our store"
+        },
+        {
+          "type": "range",
+          "id": "hero_heading_font_size",
+          "label": "Font Size (PX)",
+          "default": 35,
+          "min": 10,
+          "max": 99
+        },
+        {
+          "type": "select",
+          "id": "hero_heading_font_weight",
+          "label": "Font Weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semi Bold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            },
+            {
+              "value": "800",
+              "label": "Extra Bold"
+            },
+            {
+              "value": "900",
+              "label": "Extra Black"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "hh_text_transform",
+          "label": "Font Style",
+          "options": [
+            {
+              "value": "Uppercase",
+              "label": "Uppercase"
+            },
+            {
+              "value": "lowercase",
+              "label": "Lowercase"
+            },
+            {
+              "value": "Capitalize",
+              "label": "Capitalize"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "hero_paragraph",
+          "label": "Write Text Here",
+          "default": "Discover Your True self in the most loving way"
+        },
+        {
+          "type": "range",
+          "id": "hero_para_font_size",
+          "label": "Font Size",
+          "default": 16,
+          "min": 10,
+          "max": 99
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "hero_button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "color",
+          "id": "hero_button_bg_color",
+          "label": "Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "hero_btn_text_color",
+          "label": "Text Color",
+          "default": "#ffffff",
+        },
+        {
+          "type": "color",
+          "id": "hero_btn_text_hover_color",
+          "label": "Text Hover Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "hero_btn_hover_color",
+          "label": "Button Hover Color",
+          "default": "#ffffff"
+        }
+      ]
     }
   ],
   "presets": [

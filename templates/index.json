@@ -8,28 +8,59 @@
  * ------------------------------------------------------------
  */
  {
-    "sections": {
-      "hero": {
-        "type": "hero",
-        "settings": {
-          "hero_heading": "Hero Section",
-          "hero_text": "<p>Discover Yourself</p>",
-          "hero_button_text": "Shop Now",
-          "button_color": ""
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "text_NzqUed": {
+          "type": "text",
+          "settings": {
+            "hero_heading": "Welcome to our store",
+            "hero_heading_font_size": 35,
+            "hero_heading_font_weight": "400",
+            "hh_text_transform": "Uppercase"
+          }
+        },
+        "textarea_BKtnXb": {
+          "type": "textarea",
+          "settings": {
+            "hero_paragraph": "Discover Your True self in the most loving way",
+            "hero_para_font_size": 16
+          }
+        },
+        "button_nrzyVJ": {
+          "type": "button",
+          "settings": {
+            "hero_button_text": "Shop Now"
+          }
         }
       },
-      "featured_collection_Tn99iX": {
-        "type": "featured-collection",
-        "name": "Featured Collection",
-        "settings": {
-          "collection": "allbirds",
-          "products_to_show": 4
-        }
+      "block_order": [
+        "text_NzqUed",
+        "textarea_BKtnXb",
+        "button_nrzyVJ"
+      ],
+      "settings": {
+        "hero_text": "<p>Discover Yourself</p>",
+        "hero_button_text": "Shop Now",
+        "button_color": "",
+        "hero_image": "shopify://shop_images/man-running-at-the-track.jpg",
+        "content_horizontal_alignment": "center",
+        "content_vertical_alignment": "center",
+        "hero_content_gap": 5
       }
     },
-    "order": [
-      "hero",
-      "featured_collection_Tn99iX"
-    ]
-  }
-  
+    "featured_collection_Tn99iX": {
+      "type": "featured-collection",
+      "name": "Featured Collection",
+      "settings": {
+        "collection": "allbirds",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection_Tn99iX"
+  ]
+}
